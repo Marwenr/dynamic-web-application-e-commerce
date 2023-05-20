@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-inline: 20px;
+  cursor: pointer;
+}
+
+.container:hover {
+  color: var(--main-color)
+}
+
+.icon {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}

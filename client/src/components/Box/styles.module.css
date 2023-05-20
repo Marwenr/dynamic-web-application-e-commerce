@@ -1,0 +1,8 @@
+.box {
+  box-shadow: rgba(223, 220, 220, 0.09) 0px 3px 12px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}

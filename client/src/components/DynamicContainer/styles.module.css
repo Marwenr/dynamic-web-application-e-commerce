@@ -1,0 +1,30 @@
+.container {
+  margin-top: var(--margin-top);
+  width: 100%;
+}
+
+.title {
+  padding: 7px;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.text {
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.icon {
+  color: var(--main-color)!important;
+  font-size: 20px;
+}

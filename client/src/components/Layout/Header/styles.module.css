@@ -1,0 +1,8 @@
+.link:hover {
+  color: var(--main-color);
+}
+
+.link .active {
+  color: var(--main-color)!important;
+  background-color: red;
+}

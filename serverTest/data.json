@@ -1,0 +1,252 @@
+{
+  "offers":  [
+    {
+      "id": 1,
+      "name": "offerOne",
+      "image": "src"
+    },
+    {
+      "id": 2,
+      "name": "offerOne",
+      "image": "src"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "oils and fluids"
+    },
+    {
+      "id": 2,
+      "name": "filters"
+    },
+    {
+      "id": 3,
+      "name": "oils and fluids"
+    },
+    {
+      "id": 4,
+      "name": "filters"
+    },
+    {
+      "id": 5,
+      "name": "oils and fluids"
+    },
+    {
+      "id": 6,
+      "name": "oils and fluids"
+    }
+  ],
+  "subcategories": [
+    {
+      "id": 1,
+      "name": "engine oil",
+      "icon": "engine-oil",
+      "category": "oils and fluids"
+    },
+    {
+      "id": 2,
+      "name": "brake fluid",
+      "icon": "brake-fluid",
+      "category": "oils and fluids"
+    },
+    {
+      "id": 3,
+      "name": "transmission oil",
+      "icon": "transmission-oil",
+      "category": "oils and fluids"
+    },
+    {
+      "id": 4,
+      "name": "lubricants",
+      "icon": "lubricants",
+      "category": "oils and fluids"
+    },
+    {
+      "id": 5,
+      "name": "windshield fluid",
+      "icon": "windshield-fluid",
+      "category": "oils and fluids"
+    },
+    {
+      "id": 6,
+      "name": "oil Filters",
+      "icon": "oil-Filters",
+      "category": "filters"
+    },
+    {
+      "id": 7,
+      "name": "air Filters",
+      "icon": "air-Filters",
+      "category": "filters"
+    },
+    {
+      "id": 8,
+      "name": "fuel Filters",
+      "icon": "fuel-Filters",
+      "category": "filters"
+    },
+    {
+      "id": 9,
+      "name": "pollen Filters",
+      "icon": "pollen-Filters",
+      "category": "filters"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L1",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 2,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L2",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 3,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L3",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 4,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L4",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 5,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L5",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 6,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L6",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 7,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L7",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 8,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L8",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 9,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L9",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 10,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L10",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "engine oil",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    },
+    {
+      "id": 11,
+      "reference": "",
+      "name": "engine Oil TOTAL 10W40 QUARTZ 7000 ENERGY 5L11",
+      "image": "image",
+      "brand": "total",
+      "subcategories": "brake fluid",
+      "category": "oils and fluids",
+      "price": "100",
+      "stock": 0,
+      "supplier": "fad",
+      "salles": "0",
+      "rating": "5"
+    }
+  ]
+}

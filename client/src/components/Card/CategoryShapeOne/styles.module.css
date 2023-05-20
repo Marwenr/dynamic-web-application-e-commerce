@@ -1,0 +1,19 @@
+.container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 3vw;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.container:hover {
+  background-color: white;
+  color: var(--main-color);
+}
