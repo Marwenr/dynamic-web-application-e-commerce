@@ -28,7 +28,7 @@ const HomeNav = ({ data, component }) => {
   const fetchData = data.map((el) => (
     <div
       className={item}
-      key={el.id}
+      key={el._id}
       style={{
         display: "flex",
         alignItems: "center",
@@ -37,13 +37,13 @@ const HomeNav = ({ data, component }) => {
       }}
       onClick={() => navigate(`/categories/${el.name}`)}
     >
-      <img
+      {el.icon && <img
         src={require(`../../assets/${el.icon}.png`)}
         alt="test"
         width="20px"
         height="20px"
         className="me-2"
-      />
+      />}
       <div
         className="text-truncate"
         style={{ display: display, width: "110px" }}

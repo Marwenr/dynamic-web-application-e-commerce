@@ -11,12 +11,12 @@ const MyDynamicComponent = ({ component, props }) => {
 };
 
 const fetchData = (props) =>
-  props.map((el, index) => {
+  props.map((el) => {
     return (
       <MyDynamicComponent
         component={el.componentName}
         props={{ props: el.props }}
-        key={index}
+        key={el._id}
       />
     );
   });

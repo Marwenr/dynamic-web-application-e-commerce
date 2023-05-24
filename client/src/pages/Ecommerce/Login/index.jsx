@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Box from "../../components/Box";
+import Box from "../../../components/Box";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-import Brand from "../../components/Brand";
+import Brand from "../../../components/Brand";
 import { useDispatch, useSelector } from "react-redux";
-import { logInFnc } from "../../store/authSlice";
+import { logInFnc } from "../../../store/authSlice";
 
 const Login = () => {
   const { container, formStyle } = styles;

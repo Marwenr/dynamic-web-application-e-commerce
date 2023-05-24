@@ -31,14 +31,14 @@ const ContainerLanding = ({ props }) => {
   return (
     <div className={container} style={style}>
       <Box>
-        <MyDynamicComponent
+        {data[props.props].length > 0 && <MyDynamicComponent
           component={props.componentName}
           props={{
             data: data[props.props],
             component: props.componentNeed,
             id,
           }}
-        />
+        />}
       </Box>
     </div>
   );

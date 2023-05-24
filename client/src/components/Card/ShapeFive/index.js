@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom"
 
-const ShapeFive = ({ el, onClick }) => {
+const ShapeFive = ({ el }) => {
   const image = require("../../../assets/1.png");
   const { container, card } = styles;
   const navigate = useNavigate()

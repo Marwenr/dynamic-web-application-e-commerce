@@ -4,18 +4,26 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import {Provider} from "react-redux"
-import store from "./store"
+import { Provider } from "react-redux";
+import store from "./store";
 
-import Index from "./pages/Index";
-import Root from "./pages/Root";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Categories from "./pages/Categories";
-import Subcategories from "./pages/Subcategories";
-import Item from "./pages/Item";
+import Index from "./pages/Ecommerce/Index";
+import Root from "./pages/Ecommerce/Root";
+import Login from "./pages/Ecommerce/Login";
+import Signup from "./pages/Ecommerce/Signup";
+import About from "./pages/Ecommerce/About";
+import Contact from "./pages/Ecommerce/Contact";
+import Categories from "./pages/Ecommerce/Categories";
+import Subcategories from "./pages/Ecommerce/Subcategories";
+import Item from "./pages/Ecommerce/Item";
+
+import IndexAdmin from "./pages/Marketplace/Index";
+import RootAdmin from "./pages/Marketplace/Root";
+import Article from "./pages/Marketplace/Article";
+import DeleteArticle from "./pages/Marketplace/DeleteArticle";
+import CashDrawer from "./pages/Marketplace/CashDrawer";
+import Receipts from "./pages/Marketplace/Receipts";
+import CustomerAccount from "./pages/Marketplace/CustomerAccount";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "contact",
-        element: <Contact />
+        element: <Contact />,
       },
       {
         path: "login",
@@ -58,13 +66,42 @@ const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <div>admin</div>,
-    children: []
+    element: <RootAdmin />,
+    children: [
+      {
+        index: true,
+        element: <IndexAdmin />,
+      },
+      {
+        path: "article",
+        element: <Article />,
+      },
+      {
+        path: "deletearticle",
+        element: <DeleteArticle />,
+      },
+      {
+        path: "cashdrawer",
+        element: <CashDrawer />,
+      },
+      {
+        path: "receipts",
+        element: <Receipts />,
+      },
+      {
+        path: "customeraccount",
+        element: <CustomerAccount />,
+      },
+    ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Provider store={store}><RouterProvider router={router} /></Provider>);
+root.render(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

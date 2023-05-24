@@ -25,9 +25,9 @@ const SwiperContainerByName = ({ props }) => {
   const data = useSelector((state) => state.shop);
   const id = uuidv4();
 
-  const dataByName = data[props.props].filter(
-    (el) => el.subcategories === props.name
-  );
+  const dataByName =
+    data[props.props].length > 0 &&
+    data[props.props].filter((el) => el.subcategories === props.name);
 
   useEffect(() => {
     dispatch(getDataByName(props.props));
@@ -35,29 +35,31 @@ const SwiperContainerByName = ({ props }) => {
 
   return (
     <div className={container}>
-      <Box>
-        <div className={title}>
-          <div
-            className={textContainer}
-            onClick={() => navigate(`/categories/${props.name}`)}
-          >
-            <p className={text}>{props.name}</p>
-            <AiOutlineArrowRight color="white" />
+      {dataByName && (
+        <Box>
+          <div className={title}>
+            <div
+              className={textContainer}
+              onClick={() => navigate(`/categories/${props.name}`)}
+            >
+              <p className={text}>{props.name}</p>
+              <AiOutlineArrowRight color="white" />
+            </div>
+            <div className={`customNavigation`}>
+              <button className={`customPrevButton el-${id}-prev`}>
+                <MdOutlineNavigateBefore className={icon} />
+              </button>
+              <button className={`customNextButton el-${id}-next`}>
+                <MdOutlineNavigateNext className={icon} />
+              </button>
+            </div>
           </div>
-          <div className={`customNavigation`}>
-            <button className={`customPrevButton el-${id}-prev`}>
-              <MdOutlineNavigateBefore className={icon} />
-            </button>
-            <button className={`customNextButton el-${id}-next`}>
-              <MdOutlineNavigateNext className={icon} />
-            </button>
-          </div>
-        </div>
-        <MyDynamicComponent
-          component={props.componentName}
-          props={{ data: dataByName, component: props.componentNeed, id }}
-        />
-      </Box>
+          <MyDynamicComponent
+            component={props.componentName}
+            props={{ data: dataByName, component: props.componentNeed, id }}
+          />
+        </Box>
+      )}
     </div>
   );
 };

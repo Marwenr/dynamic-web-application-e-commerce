@@ -1,0 +1,53 @@
+.content {
+  width: 600px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 50px;
+}
+
+.group {
+  width: calc(50% - 50px/2);
+  height: 50%;
+}
+
+.groupBtn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px
+}
+
+.button {
+  width: calc(50% - 10px/2);
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #388e3c;
+  position: relative;
+  cursor: pointer;
+}
+
+.button:nth-child(3) {
+  width: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+.svgStyle {
+  font-size: 50px;
+  margin-bottom: 23px;
+  color: white;
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  background-color: #0000004a;
+  color: white;
+  width: 100%;
+  text-align: center;
+}

@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 
 const MyDynamicComponent = ({ component, props }) => {
   const LazyComponent = lazy(() =>
-    import(`../../components/DynamicContainer/${component}`)
+    import(`../../../components/DynamicContainer/${component}`)
   );
 
   return (
@@ -13,12 +13,12 @@ const MyDynamicComponent = ({ component, props }) => {
 };
 
 const fetchData = (dynamicHomePage) =>
-  dynamicHomePage.map((el, index) => {
+  dynamicHomePage.map((el) => {
     return (
       <MyDynamicComponent
         component={el.componentName}
         props={{ props: el.props }}
-        key={index}
+        key={el._id}
       />
     );
   });
@@ -26,9 +26,11 @@ const fetchData = (dynamicHomePage) =>
 const Index = () => {
   const dynamicHomePage = [
     {
+      _id: 1,
       componentName: "ContainerDividedInTwo",
       props: [
         {
+          _id: 1,
           componentName: "ContainerLanding",
           props: {
             componentName: "HomeNav",
@@ -37,6 +39,7 @@ const Index = () => {
           },
         },
         {
+          _id: 2,
           componentName: "ContainerLanding",
           props: {
             componentName: "Offers",
@@ -47,6 +50,7 @@ const Index = () => {
       ],
     },
     {
+      _id: 2,
       componentName: "Container",
       props: {
         componentName: "SwiperCar",
@@ -55,6 +59,7 @@ const Index = () => {
       },
     },
     {
+      _id: 3,
       componentName: "SwiperContainerByName",
       props: {
         name: "brake fluid",
@@ -64,9 +69,11 @@ const Index = () => {
       },
     },
     {
+      _id: 4,
       componentName: "ContainerDividedInTwo",
       props: [
         {
+          _id: 1,
           componentName: "Container",
           props: {
             componentName: "Offers",
@@ -75,6 +82,7 @@ const Index = () => {
           },
         },
         {
+          _id: 2,
           componentName: "Container",
           props: {
             componentName: "Offers",
@@ -85,6 +93,7 @@ const Index = () => {
       ],
     },
     {
+      _id: 5,
       componentName: "SwiperContainerByName",
       props: {
         name: "engine oil",

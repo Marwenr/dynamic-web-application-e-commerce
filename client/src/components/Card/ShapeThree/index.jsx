@@ -31,7 +31,7 @@ const ShapeThree = ({ el }) => {
                   fontSize: "12px",
                   cursor: "pointer",
                 }}
-                onClick={() => navigate(`/subcategories/${el.subcategories}`)}
+                onClick={() => navigate(`/categories/${el.subcategories}`)}
               >
                 {el.subcategories}
               </span>

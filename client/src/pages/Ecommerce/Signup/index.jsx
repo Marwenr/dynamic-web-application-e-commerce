@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Box from "../../components/Box";
+import Box from "../../../components/Box";
 import { Alert, Button, Form } from "react-bootstrap";
 import styles from "./styles.module.css";
-import Brand from "../../components/Brand";
+import Brand from "../../../components/Brand";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createAccount } from "../../store/authSlice";
+import { createAccount } from "../../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {

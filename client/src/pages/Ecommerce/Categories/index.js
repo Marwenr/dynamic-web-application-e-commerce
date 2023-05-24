@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Box from "../../components/Box";
+import Box from "../../../components/Box";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataByName } from "../../store/shopSlice";
-import CategoryShapeOne from "../../components/Card/CategoryShapeOne";
-import SubcategoryShapeOne from "../../components/Card/SubcategoryShapeOne";
+import { getDataByName } from "../../../store/shopSlice";
+import CategoryShapeOne from "../../../components/Card/CategoryShapeOne";
+import SubcategoryShapeOne from "../../../components/Card/SubcategoryShapeOne";
 import styles from "./styles.module.css";
 
 const Categories = () => {
@@ -17,16 +17,16 @@ const Categories = () => {
     dispatch(getDataByName("subcategories"));
   }, [dispatch]);
 
-  const fetchData = categories.map((el) => (
-    <CategoryShapeOne key={el.id} el={el} onClick={() => setSub(el.name)} />
+  const fetchData = categories && categories.map((el) => (
+    <CategoryShapeOne key={el._id} el={el} onClick={() => setSub(el.name)} />
   ));
 
-  const subcategoriesSelected = subcategories.filter(
+  const subcategoriesSelected = subcategories && subcategories.filter(
     (el) => el.category === sub
   );
 
-  const fetchSub = subcategoriesSelected.map((el) => (
-    <SubcategoryShapeOne key={el.id} el={el} />
+  const fetchSub = subcategoriesSelected && subcategoriesSelected.map((el) => (
+    <SubcategoryShapeOne key={el._id} el={el} />
   ));
 
   return (

@@ -18,14 +18,6 @@ const MyDynamicComponent = ({ component, props }) => {
 };
 
 const SwiperCar = ({ data, component, id }) => {
-  const swiperSlide = data.map((el, index) => {
-    return (
-      <SwiperSlide key={index}>
-        <MyDynamicComponent component={component} props={{ el }} />
-      </SwiperSlide>
-    );
-  });
-
   const [slidesPerView, setSlidesPerView] = useState(9);
 
   useEffect(() => {
@@ -44,12 +36,20 @@ const SwiperCar = ({ data, component, id }) => {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const swiperSlide = data.map((el) => {
+    return (
+      <SwiperSlide key={el._id}>
+        <MyDynamicComponent component={component} props={{ el }} />
+      </SwiperSlide>
+    );
+  });
 
   return (
     <>
