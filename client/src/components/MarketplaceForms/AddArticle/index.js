@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Alert, Button, Form, Image, InputGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import Box from "../../../components/Box";
+import { GrFormPreviousLink } from "react-icons/gr";
 
 const AddArticle = ({
   reference,
@@ -9,6 +10,8 @@ const AddArticle = ({
   postArticle,
   postNewCategory,
   postNewSubcategory,
+  handleCheck,
+  id
 }) => {
   const { categories, subcategories, msg } = useSelector((state) => state.shop);
   const [categoriesSelected, setCategoriesSelected] = useState("");
@@ -61,6 +64,7 @@ const AddArticle = ({
   const handleAdd = (e) => {
     e.preventDefault();
     const data = {
+      _id: id,
       reference,
       name,
       price,
@@ -72,26 +76,35 @@ const AddArticle = ({
       image: selectedImage,
     };
     dispatch(postArticle(data));
+    handleCheck()
   };
 
   const handleNewCategory = (e) => {
     e.preventDefault();
-    dispatch(postNewCategory(newCategory));
+    const data = {
+      name: newCategory,
+      _id: id,
+    };
+    dispatch(postNewCategory(data));
   };
   const handleNewSubcategory = (e) => {
     e.preventDefault();
-    const subData = {
+    const data = {
+      _id: id,
       name: newSubcategory,
       category: categoriesSelected,
     };
-    if (subData.category === "AddNewCategory") return false;
-    dispatch(postNewSubcategory(subData));
+    if (data.category === "AddNewCategory") return false;
+    dispatch(postNewSubcategory(data));
   };
 
   return (
     <div className="container mt-3">
       <Box>
-        <h2 className="p-3">Add Article</h2>
+        <div className="d-flex justify-content-between align-items-center">
+          <h2 className="p-3">Add Article</h2>
+          <GrFormPreviousLink style={{ fontSize: "30px", marginRight: "30px", cursor: "pointer" }} onClick={() => handleCheck()} />
+        </div>
         <Form className="p-3">
           <InputGroup className="mb-3">
             <Form.Control

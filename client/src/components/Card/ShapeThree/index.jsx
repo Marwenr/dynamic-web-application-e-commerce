@@ -5,16 +5,17 @@ import Box from "../../Box";
 import { useNavigate } from "react-router-dom";
 
 const ShapeThree = ({ el }) => {
-  const image = require("../../../assets/1.png");
   const { container } = styles;
   const navigate = useNavigate();
+
+  console.log(el)
 
   return (
     <div className="mt-3 container">
       <Box>
         <div className="d-flex p-3 gap-5">
           <Card style={{ width: "300px" }}>
-            <Card.Img variant="top" src={image} />
+            <Card.Img variant="top" src={el.image} />
           </Card>
           <div className="text-capitalize">
             <p
@@ -31,12 +32,16 @@ const ShapeThree = ({ el }) => {
                   fontSize: "12px",
                   cursor: "pointer",
                 }}
-                onClick={() => navigate(`/categories/${el.subcategories}`)}
+                onClick={() => navigate(`/categories/${el.subcategory}`)}
               >
-                {el.subcategories}
+                {el.subcategory}
               </span>
             </p>
             <h3>{el.name}</h3>
+            <p>Reference: {el.reference}</p>
+            <p>Manufacturer: {el.manufacturer}</p>
+            <p>Quantity: {el.quantity}</p>
+            <p>Price: {el.price}</p>
           </div>
         </div>
       </Box>

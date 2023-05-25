@@ -82,6 +82,20 @@ exports.updateArticle = async (req, res, next) => {
   }
 };
 
+exports.deleteArticle = async (req, res, next) => {
+  try {
+    const {
+      reference,
+    } = req.body;
+
+    const data = await Article.findOneAndDelete({reference: reference});
+    if (data) return res.json({ msg: "Article deleted successfully." });
+    else return res.json({ msg: "Failed to delete Article to the database" });
+  } catch (ex) {
+    next(ex);
+  }
+};
+
 exports.getCategories = async (req, res, next) => {
   try {
     const categories = await Category.find();

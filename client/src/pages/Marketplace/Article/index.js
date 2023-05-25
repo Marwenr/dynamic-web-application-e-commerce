@@ -11,14 +11,15 @@ import {
   putUpdateArticle,
 } from "../../../store/shopSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 const Article = () => {
   const dispatch = useDispatch();
-  const [referenceS, setReferenceS] = useState("")
   const [reference, setReference] = useState("");
   const [check, setCheck] = useState("");
   const { items } = useSelector((state) => state.shop);
-  const item = items.find((item) => item.reference === referenceS);
+  const item = items.find((item) => item.reference === reference);
+  const id = uuidv4();
 
   useEffect(() => {
     dispatch(getDataByName("items"));
@@ -27,31 +28,37 @@ const Article = () => {
   }, [dispatch]);
 
   const handleArticle = () => {
-    setReference(referenceS)
-    if (referenceS) {
+    setReference(reference)
+    if (reference) {
       item ? setCheck("edit") : setCheck("add");
     }
   };
 
+  const handleCheck = () => {
+    setCheck("")
+  }
+
   return (
     <div>
-      <Box>
-        <div className="p-3">
-          <h4>Add / Edit Article</h4>
-          <Form.Control
-            className="mt-3"
-            type="text"
-            placeholder="Reference"
-            value={referenceS}
-            onChange={(e) => setReferenceS(e.target.value)}
-          />
-          {item && <div className="mt-3">{item.name}</div>}
-          <Button className="mt-3" onClick={handleArticle}>
-            {item ? "Edit" : "Add"}
-          </Button>
-        </div>
-      </Box>
-      {check === "edit" && <EditArticle reference={reference} item={item} dispatch={dispatch} putUpdateArticle={putUpdateArticle} />}
+      {
+        !check && <Box>
+          <div className="p-3">
+            <h4>Add / Edit Article</h4>
+            <Form.Control
+              className="mt-3"
+              type="text"
+              placeholder="Reference"
+              value={reference}
+              onChange={(e) => setReference(e.target.value)}
+            />
+            {item && <div className="mt-3">{item.name}</div>}
+            <Button className="mt-3" onClick={handleArticle}>
+              {item ? "Edit" : "Add"}
+            </Button>
+          </div>
+        </Box>
+      }
+      {check === "edit" && <EditArticle reference={reference} item={item} dispatch={dispatch} putUpdateArticle={putUpdateArticle} handleCheck={handleCheck} />}
       {check === "add" && (
         <AddArticle
           reference={reference}
@@ -59,6 +66,8 @@ const Article = () => {
           postArticle={postArticle}
           postNewCategory={postNewCategory}
           postNewSubcategory={postNewSubcategory}
+          handleCheck={handleCheck}
+          id={id}
         />
       )}
     </div>

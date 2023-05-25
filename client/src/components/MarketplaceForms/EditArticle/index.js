@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Image, InputGroup } from "react-bootstrap";
 import { getDataByName } from "../../../store/shopSlice";
 import Box from "../../../components/Box";
+import { GrFormPreviousLink } from "react-icons/gr";
 
-const EditArticle = ({ reference, item, dispatch, putUpdateArticle }) => {
+const EditArticle = ({ reference, item, dispatch, putUpdateArticle, handleCheck }) => {
   const [selectedImage, setSelectedImage] = useState(item.image);
   const [name, setName] = useState(item.name);
   const [price, setPrice] = useState(item.price);
@@ -46,12 +47,16 @@ const EditArticle = ({ reference, item, dispatch, putUpdateArticle }) => {
       subcategory: item.subcategory,
     }
     dispatch(putUpdateArticle(data))
+    handleCheck()
   }
 
   return (
     <div className="container mt-3">
       <Box>
-        <h2 className="p-3">Edit Article</h2>
+        <div className="d-flex justify-content-between align-items-center">
+          <h2 className="p-3">Edit Article</h2>
+          <GrFormPreviousLink style={{ fontSize: "30px", marginRight: "30px", cursor: "pointer" }} onClick={() => handleCheck()} />
+        </div>
         <Form className="p-3">
           <InputGroup className="mb-3">
             <Form.Control
@@ -82,15 +87,15 @@ const EditArticle = ({ reference, item, dispatch, putUpdateArticle }) => {
               onChange={(e) => setPrice(e.target.value)}
             />
 
-          <InputGroup.Text id="qu">All Quantity:</InputGroup.Text>
-          <Form.Control
-            id="qu"
-            type="text"
-            placeholder="Quantity Add"
-            defaultValue={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-        </InputGroup>
+            <InputGroup.Text id="qu">All Quantity:</InputGroup.Text>
+            <Form.Control
+              id="qu"
+              type="text"
+              placeholder="Quantity Add"
+              defaultValue={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+          </InputGroup>
           <InputGroup className="mb-3">
             <InputGroup.Text id="sup">Supplier:</InputGroup.Text>
             <Form.Control

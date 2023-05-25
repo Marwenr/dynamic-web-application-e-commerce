@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataByName } from "../../../store/shopSlice";
 import Box from "../../../components/Box";
-import ShapeFive from "../../../components/Card/ShapeFive";
+import ItemShapeOne from "../../../components/Card/ItemShapeOne";
 
 const Subcategories = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Subcategories = () => {
 
   const myData = items.filter((el) => el.subcategory === id);
 
-  const fetchData = myData.map(el => <ShapeFive key={el._id} el={el} /> )
+  const fetchData = myData.map(el => <ItemShapeOne key={el._id} el={el} /> )
 
   return (
     <div className="container mt-3">

@@ -1,6 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
-const id = uuidv4();
 
 export const getDataByName = createAsyncThunk(
   "getDataByName",
@@ -22,7 +20,6 @@ export const postArticle = createAsyncThunk(
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      data._id = id;
       const res = await fetch(`http://localhost:3005/api/market/postItem`, {
         method: "POST",
         headers: {
@@ -66,15 +63,35 @@ export const putUpdateArticle = createAsyncThunk(
   }
 );
 
-export const postNewCategory = createAsyncThunk(
-  "postNewCategory",
-  async (name, thunkAPI) => {
+export const putDeleteArticle = createAsyncThunk(
+  "putDeleteArticle",
+  async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const data = {
-        name,
-        _id: id,
+      const res = await fetch(`http://localhost:3005/api/market/deleteItem`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      const articleData = {
+        msg: result.msg,
+        data,
       };
+      return articleData;
+    } catch (err) {
+      rejectWithValue(err.message);
+    }
+  }
+);
+
+export const postNewCategory = createAsyncThunk(
+  "postNewCategory",
+  async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
       const res = await fetch(`http://localhost:3005/api/market/newCategory`, {
         method: "POST",
         headers: {
@@ -96,14 +113,9 @@ export const postNewCategory = createAsyncThunk(
 
 export const postNewSubcategory = createAsyncThunk(
   "postNewSubcategory",
-  async (subData, thunkAPI) => {
+  async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const data = {
-        name: subData.name,
-        category: subData.category,
-        _id: id,
-      };
       const res = await fetch(
         `http://localhost:3005/api/market/newSubcategory`,
         {
@@ -171,14 +183,25 @@ const shopSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(putUpdateArticle.fulfilled, (state, action) => {
+      state.isLoading = false;
+      const items = JSON.parse(JSON.stringify(state.items));
+      const newItems = items.map((item) =>
+        item.reference === action.payload.data.reference
+          ? action.payload.data
+          : item
+      );
+      state.items = newItems;
+    });
+
+    builder.addCase(putDeleteArticle.pending, (state, action) => {
       state.isLoading = true;
-      // const items = JSON.parse(JSON.stringify(state.items));
-      // const newItems = items.map((item) =>
-      //   item.reference === action.payload.data.reference
-      //     ? action.payload.data
-      //     : item
-      // );
-      // state.items = newItems;
+    });
+    builder.addCase(putDeleteArticle.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.msg = action.payload.msg;
+      const items = JSON.parse(JSON.stringify(state.items));
+      const newItems = items.filter((item) => item.reference !== action.payload.data.reference);
+      state.items = newItems;
     });
 
     builder.addCase(postNewCategory.pending, (state, action) => {
