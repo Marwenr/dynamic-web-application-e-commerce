@@ -1,30 +1,28 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getDataByName } from "../../../store/shopSlice";
 import styles from "./styles.module.css";
 import {
   AiOutlineFileAdd,
   AiOutlineDelete,
   AiOutlineCreditCard,
-  AiOutlineAudit,
   AiOutlineAppstore,
   AiOutlineUserAdd,
-  AiOutlineUserDelete,
   AiOutlinePercentage,
 } from "react-icons/ai";
 import { FaCashRegister } from "react-icons/fa";
+import { MdDynamicFeed } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const dispatch = useDispatch();
-  const { content, group, groupBtn, button, title, svgStyle } = styles;
   const navigate = useNavigate();
+  const { content, group, groupBtn, button, title, svgStyle } = styles;
 
   useEffect(() => {
     dispatch(getDataByName("categories"));
     dispatch(getDataByName("subcategories"));
   }, [dispatch]);
-
 
   return (
     <div className={content}>
@@ -52,10 +50,6 @@ const Index = () => {
             <AiOutlineCreditCard className={svgStyle} />
             <span className={title}>Receipts</span>
           </p>
-          <p className={button} onClick={() => navigate("customeraccount")}>
-            <AiOutlineAudit className={svgStyle} />
-            <span className={title}>Customer Account</span>
-          </p>
         </div>
       </div>
       <div className={group}>
@@ -65,9 +59,9 @@ const Index = () => {
             <AiOutlineUserAdd className={svgStyle} />
             <span className={title}>Add Admin</span>
           </p>
-          <p className={button}>
-            <AiOutlineUserDelete className={svgStyle} />
-            <span className={title}>Delete Admin</span>
+          <p className={button} onClick={() => navigate("dynamic")}>
+            <MdDynamicFeed className={svgStyle} />
+            <span className={title}>Dynamic Home</span>
           </p>
           <p className={button} onClick={() => navigate("/")}>
             <AiOutlineAppstore className={svgStyle} />

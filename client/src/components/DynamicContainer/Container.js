@@ -15,6 +15,30 @@ const MyDynamicComponent = ({ component, props }) => {
   );
 };
 
+const fetchData = (props, data, id) =>
+  props.map((el) => {
+    const style =
+      el.componentName === "HomeNav"
+        ? { width: "20%" }
+        : el.componentName === "HomeNav"
+        ? { width: "80%" }
+        : { width: "100%" };
+    return (
+      <div style={style} key={el._id}>
+        <Box>
+          <MyDynamicComponent
+            component={el.componentName}
+            props={{
+              data: data[el.props],
+              component: el.componentNeed,
+              id,
+            }}
+          />
+        </Box>
+      </div>
+    );
+  });
+
 const Container = ({ props }) => {
   const { container } = styles;
   const dispatch = useDispatch();
@@ -22,21 +46,12 @@ const Container = ({ props }) => {
   const id = uuidv4();
 
   useEffect(() => {
-    dispatch(getDataByName(props.props));
-  }, [props.props, dispatch]);
+    dispatch(getDataByName(props[0].props));
+  }, [props, dispatch]);
 
   return (
-    <div className={container}>
-      <Box>
-        {data[props.props].length > 0 && <MyDynamicComponent
-          component={props.componentName}
-          props={{
-            data: data[props.props],
-            component: props.componentNeed,
-            id,
-          }}
-        />}
-      </Box>
+    <div className={container} style={{ display: "flex", gap: "20px" }}>
+      {fetchData(props, data, id)}
     </div>
   );
 };

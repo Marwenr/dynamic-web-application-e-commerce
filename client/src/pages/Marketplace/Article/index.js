@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Box from "../../../components/Box";
-import AddArticle from "../../../components/MarketplaceForms/AddArticle";
-import EditArticle from "../../../components/MarketplaceForms/EditArticle";
 import {
   getDataByName,
   postArticle,
@@ -12,9 +10,14 @@ import {
 } from "../../../store/shopSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import AddArticle from "../../../components/MarketplaceForms/AddArticle";
+import EditArticle from "../../../components/MarketplaceForms/EditArticle";
+import Return from "../../../components/MarketplaceForms/Return";
 
 const Article = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [reference, setReference] = useState("");
   const [check, setCheck] = useState("");
   const { items } = useSelector((state) => state.shop);
@@ -28,22 +31,26 @@ const Article = () => {
   }, [dispatch]);
 
   const handleArticle = () => {
-    setReference(reference)
+    setReference(reference);
     if (reference) {
       item ? setCheck("edit") : setCheck("add");
     }
   };
 
   const handleCheck = () => {
-    setCheck("")
-  }
+    setCheck("");
+  };
+
+  const handleReturn = () => {
+    navigate("/admin");
+  };
 
   return (
     <div>
-      {
-        !check && <Box>
+      {!check && (
+        <Box>
           <div className="p-3">
-            <h4>Add / Edit Article</h4>
+            <Return title="Add / Edit Article" handleCheck={handleReturn} />
             <Form.Control
               className="mt-3"
               type="text"
@@ -57,8 +64,16 @@ const Article = () => {
             </Button>
           </div>
         </Box>
-      }
-      {check === "edit" && <EditArticle reference={reference} item={item} dispatch={dispatch} putUpdateArticle={putUpdateArticle} handleCheck={handleCheck} />}
+      )}
+      {check === "edit" && (
+        <EditArticle
+          reference={reference}
+          item={item}
+          dispatch={dispatch}
+          putUpdateArticle={putUpdateArticle}
+          handleCheck={handleCheck}
+        />
+      )}
       {check === "add" && (
         <AddArticle
           reference={reference}

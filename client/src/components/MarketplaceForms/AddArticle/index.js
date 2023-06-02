@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Alert, Button, Form, Image, InputGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import Box from "../../../components/Box";
-import { GrFormPreviousLink } from "react-icons/gr";
+import Return from "../Return";
 
 const AddArticle = ({
   reference,
@@ -11,7 +11,7 @@ const AddArticle = ({
   postNewCategory,
   postNewSubcategory,
   handleCheck,
-  id
+  id,
 }) => {
   const { categories, subcategories, msg } = useSelector((state) => state.shop);
   const [categoriesSelected, setCategoriesSelected] = useState("");
@@ -76,7 +76,7 @@ const AddArticle = ({
       image: selectedImage,
     };
     dispatch(postArticle(data));
-    handleCheck()
+    handleCheck();
   };
 
   const handleNewCategory = (e) => {
@@ -101,10 +101,7 @@ const AddArticle = ({
   return (
     <div className="container mt-3">
       <Box>
-        <div className="d-flex justify-content-between align-items-center">
-          <h2 className="p-3">Add Article</h2>
-          <GrFormPreviousLink style={{ fontSize: "30px", marginRight: "30px", cursor: "pointer" }} onClick={() => handleCheck()} />
-        </div>
+        <Return title="Add Article" handleCheck={handleCheck} />
         <Form className="p-3">
           <InputGroup className="mb-3">
             <Form.Control

@@ -2,6 +2,8 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const articleRoutes = require("./routes/articleRoutes")
+const invoiceRoutes = require("./routes/invoiceRoutes")
+const pageRoutes = require("./routes/pageRoutes")
 
 const PORT = 3005
 const MONGO_URL = "mongodb+srv://marwenrhim:marwen123456789@web.kmqdknq.mongodb.net/?authSource=web&authMechanism=SCRAM-SHA-1"
@@ -18,6 +20,8 @@ mongoose.connect(MONGO_URL, {
 
 
 app.use('/api/market', articleRoutes)
+app.use('/api/sales', invoiceRoutes)
+app.use('/api/pages', pageRoutes)
 
 const server = app.listen(PORT, () => {
   console.log(`server started on Port ${PORT}`)

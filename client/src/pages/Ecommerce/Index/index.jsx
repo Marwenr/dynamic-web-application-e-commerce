@@ -1,4 +1,6 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getHomePage } from "../../../store/pageSlice";
 
 const MyDynamicComponent = ({ component, props }) => {
   const LazyComponent = lazy(() =>
@@ -12,8 +14,8 @@ const MyDynamicComponent = ({ component, props }) => {
   );
 };
 
-const fetchData = (dynamicHomePage) =>
-  dynamicHomePage.map((el) => {
+const fetchData = (homePage) =>
+  homePage.map((el) => {
     return (
       <MyDynamicComponent
         component={el.componentName}
@@ -24,6 +26,12 @@ const fetchData = (dynamicHomePage) =>
   });
 
 const Index = () => {
+  const dispatch = useDispatch();
+  const { homePage } = useSelector((state) => state.page);
+
+  useEffect(() => {
+    dispatch(getHomePage());
+  }, [dispatch]);
   const dynamicHomePage = [
     {
       _id: 1,
@@ -52,21 +60,27 @@ const Index = () => {
     {
       _id: 2,
       componentName: "Container",
-      props: {
-        componentName: "SwiperCar",
-        props: "subcategories",
-        componentNeed: "SubcategoryShapeOne",
-      },
+      props: 
+        {
+          _id: "1",
+          componentName: "SwiperCar",
+          props: "subcategories",
+          componentNeed: "SubcategoryShapeOne",
+        },
+  
     },
     {
       _id: 3,
       componentName: "SwiperContainerByName",
-      props: {
-        name: "brake fluid",
-        componentName: "SwiperCar",
-        props: "items",
-        componentNeed: "ItemShapeOne",
-      },
+      props: 
+        {
+          _id: "1",
+          name: "brake fluid",
+          componentName: "SwiperCar",
+          props: "items",
+          componentNeed: "ItemShapeOne",
+        },
+      
     },
     {
       _id: 4,
@@ -95,16 +109,23 @@ const Index = () => {
     {
       _id: 5,
       componentName: "SwiperContainerByName",
-      props: {
-        name: "engine oil",
-        componentName: "SwiperCar",
-        props: "items",
-        componentNeed: "ItemShapeOne",
-      },
+      props: 
+        {
+          _id: 1,
+          name: "engine oil",
+          componentName: "SwiperCar",
+          props: "items",
+          componentNeed: "ItemShapeOne",
+        },
     },
   ];
 
-  return <div className="container">{fetchData(dynamicHomePage)}</div>;
+
+  return homePage.length > 0 ? (
+    <div className="container">{fetchData(homePage)}</div>
+  ) : (
+    <div>Loading...</div>
+  );
 };
 
 export default Index;

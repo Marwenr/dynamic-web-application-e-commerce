@@ -27,3 +27,12 @@ body {
   border-radius: 5px;
   margin-left: 5px;
 }
+
+.drawerArticle .deleteArticle {
+  visibility: hidden;
+  position: absolute;
+}
+
+.drawerArticle:hover .deleteArticle {
+  visibility: visible;
+}

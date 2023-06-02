@@ -7,7 +7,7 @@ const ItemShapeOne = ({ el }) => {
   const { container } = styles
 
   return (
-    <div onClick={() => navigate(el.name)} className={container}>
+    <div onClick={() => navigate(`/${el.name}`)} className={container}>
       <img src={el.image} alt="item" width="110px" height="110px" />
       <div className="text-center text-truncate" style={{ fontSize: "14px", marginTop: "4px", width: "110px", padding: "10px" }}>{el.name}</div>
     </div>

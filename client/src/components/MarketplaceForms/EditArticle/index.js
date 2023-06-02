@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Image, InputGroup } from "react-bootstrap";
 import { getDataByName } from "../../../store/shopSlice";
 import Box from "../../../components/Box";
-import { GrFormPreviousLink } from "react-icons/gr";
+import Return from "../Return";
 
-const EditArticle = ({ reference, item, dispatch, putUpdateArticle, handleCheck }) => {
+const EditArticle = ({
+  reference,
+  item,
+  dispatch,
+  putUpdateArticle,
+  handleCheck,
+}) => {
   const [selectedImage, setSelectedImage] = useState(item.image);
   const [name, setName] = useState(item.name);
   const [price, setPrice] = useState(item.price);
@@ -45,18 +51,15 @@ const EditArticle = ({ reference, item, dispatch, putUpdateArticle, handleCheck 
       quantity,
       category: item.category,
       subcategory: item.subcategory,
-    }
-    dispatch(putUpdateArticle(data))
-    handleCheck()
-  }
+    };
+    dispatch(putUpdateArticle(data));
+    handleCheck();
+  };
 
   return (
     <div className="container mt-3">
       <Box>
-        <div className="d-flex justify-content-between align-items-center">
-          <h2 className="p-3">Edit Article</h2>
-          <GrFormPreviousLink style={{ fontSize: "30px", marginRight: "30px", cursor: "pointer" }} onClick={() => handleCheck()} />
-        </div>
+        <Return title="Edit Article" handleCheck={handleCheck} />
         <Form className="p-3">
           <InputGroup className="mb-3">
             <Form.Control

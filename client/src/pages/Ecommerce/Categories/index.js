@@ -17,23 +17,30 @@ const Categories = () => {
     dispatch(getDataByName("subcategories"));
   }, [dispatch]);
 
-  const fetchData = categories && categories.map((el) => (
-    <CategoryShapeOne key={el._id} el={el} onClick={() => setSub(el.name)} />
-  ));
+  const fetchData =
+    categories &&
+    categories.map((el) => (
+      <CategoryShapeOne key={el._id} el={el} onClick={() => setSub(el.name)} />
+    ));
 
-  const subcategoriesSelected = subcategories && subcategories.filter(
-    (el) => el.category === sub
-  );
+  const subcategoriesSelected =
+    subcategories && subcategories.filter((el) => el.category === sub);
 
-  const fetchSub = subcategoriesSelected && subcategoriesSelected.map((el) => (
-    <SubcategoryShapeOne key={el._id} el={el} />
-  ));
+  const fetchSub =
+    subcategoriesSelected &&
+    subcategoriesSelected.map((el) => (
+      <SubcategoryShapeOne key={el._id} el={el} />
+    ));
 
   return (
     <div className="container mt-3">
       <Box>
         <div className="d-flex">
-          {sub ? <div className={container}>{fetchSub}</div> : <div className={container}>{fetchData}</div>}
+          {sub ? (
+            <div className={container}>{fetchSub}</div>
+          ) : (
+            <div className={container}>{fetchData}</div>
+          )}
         </div>
       </Box>
     </div>

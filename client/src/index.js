@@ -23,7 +23,7 @@ import Article from "./pages/Marketplace/Article";
 import DeleteArticle from "./pages/Marketplace/DeleteArticle";
 import CashDrawer from "./pages/Marketplace/CashDrawer";
 import Receipts from "./pages/Marketplace/Receipts";
-import CustomerAccount from "./pages/Marketplace/CustomerAccount";
+import DynamicHome from "./pages/Marketplace/DynamicHome";
 
 const router = createBrowserRouter([
   {
@@ -89,9 +89,9 @@ const router = createBrowserRouter([
         element: <Receipts />,
       },
       {
-        path: "customeraccount",
-        element: <CustomerAccount />,
-      },
+        path: "dynamic",
+        element: <DynamicHome />,
+      }
     ],
   },
 ]);
