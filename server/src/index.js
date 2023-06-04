@@ -6,7 +6,7 @@ const invoiceRoutes = require("./routes/invoiceRoutes")
 const pageRoutes = require("./routes/pageRoutes")
 
 const PORT = 3005
-const MONGO_URL = "mongodb+srv://marwenrhim:marwen123456789@web.kmqdknq.mongodb.net/?authSource=web&authMechanism=SCRAM-SHA-1"
+const MONGO_URL = "mongodb+srv://username:password@web.kmqdknq.mongodb.net/?authSource=web&authMechanism=SCRAM-SHA-1"
 
 const app = express()
 
