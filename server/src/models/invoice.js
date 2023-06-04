@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
 
 const invoiceSchema = mongoose.Schema({
+  "validation": {
+    type: Boolean,
+    required: true
+  },
   "client": {
     type: String,
     required: true

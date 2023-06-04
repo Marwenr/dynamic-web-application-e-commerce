@@ -1,0 +1,101 @@
+.card {
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border: none;
+}
+.cardBody {
+  padding: 30px;
+}
+.cardHeaderFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.prdctQtyContainer {
+  display: flex;
+  align-items: center;
+}
+
+.qtyInputBox {
+  max-width: 70px;
+  padding: 0px 5px;
+  min-height: 40px;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  margin: 0px 5px;
+  color: #475F7B;
+  background-color: #FFF;
+  border: 1px solid #DFE3E7;
+  transition: 0.3s;
+}
+
+.qtyInputBox:focus {
+  color: #475F7B;
+  background-color: #FFF;
+  border-color: #5A8DEE;
+  outline: 0;
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+}
+
+.prdctQtyBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5a8dee2e;
+  color: #5a8dee;
+  font-size: 11px;
+  transition: 0.3s;
+}
+
+.prdctQtyBtn:hover {
+  background-color: #5a8dee;
+  color: #fff;
+}
+
+.productImg img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+.prdctDelete {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #fde6e7;
+  color: #ff5b5c;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.prdctDelete:hover {
+  background-color: #ff5b5c;
+  color: #fff;
+}
+
+.cartEmpty {
+  text-align: center;
+  padding: 30px;
+}
+
+.cartEmpty i {
+  font-size: 45px;
+  color: #d5d6d8;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.cartEmpty p {
+  margin-bottom: 0;
+  color: #bdbdbd;
+  font-size: 16px;
+}
+
+.cartTable td, .cartTable th {
+  vertical-align: middle;
+}

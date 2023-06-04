@@ -1,14 +1,19 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import styles from "./styles.module.css";
 import Box from "../../Box";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../store/cartSlice";
 
 const ShapeThree = ({ el }) => {
-  const { container } = styles;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  console.log(el)
+  const addToCart = () => {
+    const data = { ...el, qty: 1 };
+    dispatch(addItem(data));
+  };
 
   return (
     <div className="mt-3 container">
@@ -42,6 +47,7 @@ const ShapeThree = ({ el }) => {
             <p>Manufacturer: {el.manufacturer}</p>
             <p>Quantity: {el.quantity}</p>
             <p>Price: {el.price}</p>
+            <Button onClick={addToCart}>Add to cart</Button>
           </div>
         </div>
       </Box>

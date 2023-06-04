@@ -3,10 +3,12 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import HeaderAuth from "../HeaderAuth";
 import HeaderCart from "../HeaderCart";
 import styles from "./styles.module.css";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const { link, container } = styles;
+  const { user } = useSelector((state) => state.auth);
   return (
     <Navbar bg="light" expand="lg" className={`${container} mt-3`}>
       <Container>
@@ -26,6 +28,11 @@ const Header = () => {
             <Nav.Link className={link} as={NavLink} to={"contact"}>
               Contact
             </Nav.Link>
+            {user.displayName === "admin" && (
+              <Nav.Link className={link} as={NavLink} to={"admin"}>
+                Dashboard
+              </Nav.Link>
+            )}
           </Nav>
           <HeaderAuth />
           <HeaderCart />

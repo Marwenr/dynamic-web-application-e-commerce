@@ -32,6 +32,9 @@ const Signup = () => {
     if (displayName.length < 3 || displayName.length > 12) {
       setErr({ displayName: "Username should be greater than 3 characters" });
       return false;
+    } else if (displayName === "admin") {
+      setErr({ displayName: "You cannot choose this name" });
+      return false;
     } else if (email.length < 3 || email.length > 30) {
       setErr({ email: "Email required" });
       return false;
@@ -41,7 +44,7 @@ const Signup = () => {
     }
     return true;
   };
-  console.log(err);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (handleValidation()) {

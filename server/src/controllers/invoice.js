@@ -12,8 +12,9 @@ exports.getInvoiceByName = async (req, res, next) => {
 
 exports.postInvoice = async (req, res, next) => {
   try {
-    const { client, cashier, date, total, articles } = req.body;
+    const { validation, client, cashier, date, total, articles } = req.body;
     const data = await Invoice.create({
+      validation,
       client,
       cashier,
       date,

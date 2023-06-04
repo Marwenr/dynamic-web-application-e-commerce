@@ -28,23 +28,20 @@ export const createAccount = createAsyncThunk(
   }
 );
 
-export const logInFnc = createAsyncThunk(
-  "logInFnc",
-  async (data, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const res = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      const serializedRes = res.user.toJSON();
-      return serializedRes;
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
+export const logInFnc = createAsyncThunk("logInFnc", async (data, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const res = await signInWithEmailAndPassword(
+      auth,
+      data.email,
+      data.password
+    );
+    const serializedRes = res.user.toJSON();
+    return serializedRes;
+  } catch (err) {
+    return rejectWithValue(err.message);
   }
-);
+});
 
 export const logOutFnc = createAsyncThunk("logOutFnc", async (_, thunkAPI) => {
   const { rejectWithValue } = thunkAPI;
@@ -58,20 +55,22 @@ export const logOutFnc = createAsyncThunk("logOutFnc", async (_, thunkAPI) => {
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { user: {} },
+  initialState: { user: {}, isLogIn: false },
   extraReducers: (builder) => {
     builder.addCase(createAccount.fulfilled, (state, action) => {
       state.user = action.payload;
+      state.isLogIn = true;
     });
 
     builder.addCase(logInFnc.fulfilled, (state, action) => {
       state.user = action.payload;
-    });
-    
-    builder.addCase(logOutFnc.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.isLogIn = true;
     });
 
+    builder.addCase(logOutFnc.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isLogIn = false;
+    });
   },
 });
 

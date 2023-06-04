@@ -3,12 +3,11 @@ import Box from "../../../components/Box";
 import { Alert, Button, Form, InputGroup } from "react-bootstrap";
 import { IoMdReturnRight } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataByName } from "../../../store/shopSlice";
+import { getDataByName, putUpdateArticle } from "../../../store/shopSlice";
 import { postInvoice } from "../../../store/invoiceSlice";
 import { useNavigate } from "react-router-dom";
 import Invoice from "../../../components/MarketplaceForms/Invoice";
 import Return from "../../../components/MarketplaceForms/Return";
-
 
 const CashDrawer = () => {
   const dispatch = useDispatch();
@@ -41,9 +40,8 @@ const CashDrawer = () => {
 
   const addArticle = () => {
     const data = {
-      reference: article.reference,
-      name: article.name,
-      quantity,
+      ...article,
+      qty: quantity,
       unitPrice: article.price,
       price: priceAfterDisc,
       discount,
@@ -65,14 +63,25 @@ const CashDrawer = () => {
   };
 
   const handleSubmit = () => {
-    const data = {
-      client,
-      cashier,
-      date,
-      total,
-      articles,
-    };
-    dispatch(postInvoice(data));
+    if(client && cashier && articles.length > 0) {
+      const data = {
+        validation: true,
+        client,
+        cashier,
+        date,
+        total,
+        articles,
+      };
+      articles.map((product) =>
+        dispatch(
+          putUpdateArticle({
+            reference: product.reference,
+            quantity: product.quantity - +product.qty,
+          })
+        )
+      );
+      dispatch(postInvoice(data));
+    }
   };
 
   const handleReset = () => {

@@ -24,7 +24,7 @@ const fetchData = (props, data, id) =>
         ? { width: "80%" }
         : { width: "100%" };
     return (
-      <div style={style} key={el._id}>
+      <div style={style} key={el.id}>
         <Box>
           <MyDynamicComponent
             component={el.componentName}

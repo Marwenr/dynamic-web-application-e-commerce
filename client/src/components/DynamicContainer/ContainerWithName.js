@@ -24,10 +24,10 @@ const ContainerWithName = ({ props }) => {
   const navigate = useNavigate();
   const data = useSelector((state) => state.shop);
   const id = uuidv4();
-console.log(props)
+
   const dataByName =
     data[props[0].props].length > 0 &&
-    data[props[0].props].filter((el) => el.subcategories === props[0].name);
+    data[props[0].props].filter((el) => el.subcategory === props[0].name);
 
   useEffect(() => {
     dispatch(getDataByName(props[0].props));

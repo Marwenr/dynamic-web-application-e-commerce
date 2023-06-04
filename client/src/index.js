@@ -11,6 +11,7 @@ import Index from "./pages/Ecommerce/Index";
 import Root from "./pages/Ecommerce/Root";
 import Login from "./pages/Ecommerce/Login";
 import Signup from "./pages/Ecommerce/Signup";
+import Cart from "./pages/Ecommerce/Cart";
 import About from "./pages/Ecommerce/About";
 import Contact from "./pages/Ecommerce/Contact";
 import Categories from "./pages/Ecommerce/Categories";
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <Signup />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       {
         path: "categories",
